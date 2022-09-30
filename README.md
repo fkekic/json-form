@@ -1,4 +1,4 @@
 # json-form
 JSON Form
 
-[Usage](main/usage.md)
+[Usage](usage.md)
