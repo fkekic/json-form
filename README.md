@@ -1,6 +1,6 @@
 # json-form
 
-json-form is a single html element that can be used as Object or Array. json-form converts and stores HTML Input elements values in JSON format. It can be nested in same way as JSON Objects and Arrays allowing to **output JSON of any complexity needed by application**. It does not require framework or library.
+json-form is a single html element that stores input elements values in Object or Array. It can be nested in same way as Objects and Arrays allowing to **output JSON of any complexity**. It does not require framework or library.
 
 It's simplicity is described in [HTML-JSON  1:1](https://json-form.com/docs/one-to-one.php)
 
