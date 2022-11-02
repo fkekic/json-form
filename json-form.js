@@ -38,10 +38,11 @@ class JsonForm extends HTMLElement {
 					form.#type.object = true;
 				}
 
-			
-			// ROOT
+		
 			
 			let parent = form.parentElement.closest('json-form');
+		
+			// ROOT
 
 				if ( parent == null ){
 
@@ -231,9 +232,7 @@ class JsonForm extends HTMLElement {
 	}
 
 
-	/*
-	 Conversion of input values where necessary.
-	*/
+	/*        Conversion of input values where necessary.       */
 	#get_value( input, type ){
 
 	let value;
@@ -339,11 +338,12 @@ class JsonForm extends HTMLElement {
 			}
 	}
 	
-	get_form_data( json_key,php=false){
+	get_form_data( json_key,options){
 
+		// form_data; 1. add JSON 	2.add input files
 		const form_data = new FormData();
 
-		// JSON
+		// JSON -
 
 		const json_form_data = this.get_json();
 
@@ -362,6 +362,8 @@ class JsonForm extends HTMLElement {
 
 		if ( i_count == 0 ){
 			console.info( 'No input type file found');
+			
+		// early return if no input type file found.
 			return;
 		}
 
@@ -372,11 +374,13 @@ class JsonForm extends HTMLElement {
 			if ( name.set  ){
 
 
-					if ( php ){
-
+					if ( options.php ){
+						// PHP only - name attribute must be e.g name="myfiles[]" when input type file MULTIPLE
 						name.value = name.value + '[]';
 					}
 
+					// input file with attribute multiple
+				
 					if ( attached[i].hasAttribute('multiple')){
 
 						let m = 0;
@@ -389,7 +393,7 @@ class JsonForm extends HTMLElement {
 						}
 
 					} else {
-					
+					// input file - single
 						form_data.append( name.value , attached[i].files[0] );
 
 					}
